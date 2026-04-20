@@ -32,10 +32,12 @@ git clone <your-repo-link>
 cd <repo-name>
 ```
 
-Install required packages:
+No `requirements.txt` file is included. Instead, install dependencies manually as needed.
 
-```bash
-pip install -r requirements.txt
+If using Google Colab, run:
+
+```python
+!pip install datasets transformers scikit-learn torch torchvision matplotlib
 ```
 
 ---
@@ -62,25 +64,20 @@ pip install -r requirements.txt
 PROJECT_ROOT/
 │
 ├── README.md
-├── requirements.txt
 │
 ├── DATA/
 │   └── raw/
 │
-├── SCRIPTS/
-│   ├── 01_load_data.py
-│   ├── 02_preprocessing.py
-│   ├── 03_cnn_model.py
-│   ├── 04_vit_knn_model.py
-│   └── 05_model_comparison.py
-│
 ├── OUTPUT/
-│   ├── cnn_metrics.csv
-│   ├── vit_knn_metrics.csv
-│   └── confusion_matrices/
+│   ├── output_1.pdf
+│   ├── output_2.pdf
+│   ├── output_3.pdf
+│   ├── output_4.pdf
+│   └── output_5.pdf
 │
 ├── CNN.ipynb
-└── VIT.KNN.ipynb
+├── VIT_KNN.ipynb
+└── Combined_Model.ipynb
 ```
 
 ---
@@ -97,26 +94,20 @@ dataset = load_dataset("Hemg/AI-Generated-vs-Real-Images-Datasets")
 ```
 
 The dataset contains labeled images classified as:
-- AI-generated (AiArtData)
-- Human-made (RealArt)
+- AI-generated (AiArtData)  
+- Human-made (RealArt)  
 
 ---
 
 ### Step 2 — Install Dependencies
 
-From the project root directory:
-
-```bash
-pip install -r requirements.txt
-```
-
-If using Google Colab:
+Install required libraries manually:
 
 ```python
 !pip install datasets transformers scikit-learn torch torchvision matplotlib
 ```
 
-If errors occur, restart the runtime after installation.
+Restart the runtime if needed.
 
 ---
 
@@ -128,18 +119,14 @@ Open:
 CNN.ipynb
 ```
 
-Run all cells in order. This will:
+Run all cells in order. This notebook:
 
-- Resize and normalize images  
-- Split data into training and testing sets (80/20)  
-- Train a CNN model  
-- Generate predictions  
-- Output:
-  - Accuracy  
-  - F1-score  
-  - Precision  
-  - Recall  
-- Display confusion matrices and training curves  
+- Resizes and normalizes images  
+- Splits data into training and testing sets (80/20)  
+- Trains a CNN model  
+- Generates predictions  
+- Outputs performance metrics (accuracy, F1, precision, recall)  
+- Produces visualizations saved as PDF files  
 
 ---
 
@@ -148,44 +135,40 @@ Run all cells in order. This will:
 Open:
 
 ```
-VIT.KNN.ipynb
+VIT_KNN.ipynb
 ```
 
-Run all cells in order. This will:
+Run all cells in order. This notebook:
 
-- Load the same dataset  
-- Preprocess images using a ViT image processor  
-- Convert images into embeddings using a pretrained Vision Transformer  
-- Split data into training and testing sets (80/20)  
-- Train a KNN classifier on embeddings  
-- Generate predictions  
-- Output:
-  - Accuracy  
-  - F1-score  
-  - Precision  
-  - Recall  
-  - PR-AUC  
-- Display precision-recall curves and classification reports  
+- Loads the dataset  
+- Processes images using a Vision Transformer  
+- Extracts embeddings  
+- Trains a KNN classifier  
+- Evaluates model performance  
+- Outputs metrics and visualizations (saved as PDFs)  
 
 ---
 
-### Step 5 — Compare Results
+### Step 5 — Run Combined Model File
 
-Compare outputs from both models:
+Open:
 
-- CNN results in `CNN.ipynb`  
-- ViT + KNN results in `VIT.KNN.ipynb`  
+```
+Combined_Model.ipynb
+```
 
-Key metrics:
-
-- Weighted F1-score (primary metric)  
-- Accuracy  
-- Precision and Recall  
-- Confusion matrices  
+This notebook includes both approaches in one file and allows for direct comparison between models.
 
 ---
 
 ### Step 6 — Expected Output
+
+The `OUTPUT/` folder should contain **5 PDF files**, including:
+
+- Model performance summaries  
+- Confusion matrices  
+- Training curves  
+- Precision-recall visualizations  
 
 Typical results:
 
@@ -200,23 +183,13 @@ Typical results:
 
 ---
 
-### Notes
-
-- Dataset is relatively balanced (~53% AI, ~47% real)  
-- Many images are blurry, making classification more difficult  
-- CNN slightly outperforms ViT + KNN  
-- ViT struggles more with identifying real images  
-- GPU is recommended but not required  
-
----
-
 ## Modeling Approach
 
 - Image resizing and normalization  
-- 80/20 stratified train-test split  
+- 80/20 train-test split  
 - CNN for image classification  
-- ViT used for feature extraction (embeddings)  
-- KNN classifier applied to ViT embeddings  
+- ViT used for feature extraction  
+- KNN classifier applied to embeddings  
 - Primary evaluation metric: Weighted F1 score  
 
 ---
@@ -228,20 +201,14 @@ Typical results:
 | CNN         | ~0.80+  | ~0.80    |
 | ViT + KNN   | 0.79    | 0.79     |
 
-Additional metrics (ViT + KNN):
-
-- Precision: ~0.79  
-- Recall: ~0.79  
-- PR-AUC: 0.77  
-
 ---
 
 ## Future Work
 
-- Fine-tune the ViT model instead of embeddings  
-- Try different classifiers (Logistic Regression, SVM)  
-- Improve image preprocessing  
-- Increase dataset size  
+- Fine-tune the Vision Transformer  
+- Test additional classifiers (SVM, Logistic Regression)  
+- Improve preprocessing techniques  
+- Expand dataset size  
 - Explore deeper CNN architectures  
 
 ---
