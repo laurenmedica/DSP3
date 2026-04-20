@@ -47,6 +47,7 @@ The ViT + KNN model achieved an F1-score of approximately **0.79**, approaching 
 ## Repository Structure
 
 ```
+```
 PROJECT_ROOT/
 │
 ├── README.md
@@ -62,8 +63,10 @@ PROJECT_ROOT/
 │   └── output_5.pdf
 │
 ├── SCRIPTS/
-    |── P3EDATake2.ipynb
-    |── P3CNN_VIT.ipynb
+│   ├── P3EDATake2.ipynb
+│   └── P3CNN_VIT.ipynb
+```
+
 ```
 
 ---
