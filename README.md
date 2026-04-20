@@ -22,10 +22,6 @@ We evaluate performance primarily using weighted F1 score.
 The ViT + KNN model achieved an F1-score of approximately **0.79**, approaching the target goal of 0.80. The CNN model performed slightly better overall.
 
 ---
-
-## Installation
-
-Follow directions on scripts
 ```
 
 ---
@@ -42,7 +38,9 @@ Follow directions on scripts
 - torchvision  
 - transformers  
 - datasets  
-- matplotlib  
+- matplotlib
+- tensorflow
+- keras  
 
 ---
 
@@ -63,9 +61,9 @@ PROJECT_ROOT/
 │   ├── output_4.pdf
 │   └── output_5.pdf
 │
-├── CNN.ipynb
-├── VIT_KNN.ipynb
-└── Combined_Model.ipynb
+├── SCRIPTS/
+    |── P3EDATake2.ipynb
+    |── P3CNN_VIT.ipynb
 ```
 
 ---
@@ -99,57 +97,19 @@ Restart the runtime if needed.
 
 ---
 
-### Step 3 — Run the CNN Model
+### Step 3 — Run Combined Model File
 
 Open:
 
 ```
-CNN.ipynb
-```
-
-Run all cells in order. This notebook:
-
-- Resizes and normalizes images  
-- Splits data into training and testing sets (80/20)  
-- Trains a CNN model  
-- Generates predictions  
-- Outputs performance metrics (accuracy, F1, precision, recall)  
-- Produces visualizations saved as PDF files  
-
----
-
-### Step 4 — Run the ViT + KNN Model
-
-Open:
-
-```
-VIT_KNN.ipynb
-```
-
-Run all cells in order. This notebook:
-
-- Loads the dataset  
-- Processes images using a Vision Transformer  
-- Extracts embeddings  
-- Trains a KNN classifier  
-- Evaluates model performance  
-- Outputs metrics and visualizations (saved as PDFs)  
-
----
-
-### Step 5 — Run Combined Model File
-
-Open:
-
-```
-CNN_VIT.ipynb
+P3CNN_VIT.ipynb
 ```
 
 This notebook includes both approaches in one file and allows for direct comparison between models.
 
 ---
 
-### Step 6 — Expected Output
+### Step 4 — Expected Output
 
 The `OUTPUT/` folder should contain **5 PDF files**, including:
 
