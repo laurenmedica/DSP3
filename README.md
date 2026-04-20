@@ -142,7 +142,7 @@ Run all cells in order. This notebook:
 Open:
 
 ```
-Combined_Model.ipynb
+CNN_VIT.ipynb
 ```
 
 This notebook includes both approaches in one file and allows for direct comparison between models.
