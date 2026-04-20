@@ -25,19 +25,7 @@ The ViT + KNN model achieved an F1-score of approximately **0.79**, approaching 
 
 ## Installation
 
-Clone the repository:
-
-```bash
-git clone <your-repo-link>
-cd <repo-name>
-```
-
-No `requirements.txt` file is included. Instead, install dependencies manually as needed.
-
-If using Google Colab, run:
-
-```python
-!pip install datasets transformers scikit-learn torch torchvision matplotlib
+Follow directions on scripts
 ```
 
 ---
